@@ -23,12 +23,13 @@ Create a simple application server
 ```Go
 import (
     "net/http"
-    "github.com/mattb2401/go-eureka-client"
+    "github.com/mattb2401/go-eureka-client/eureka"
 )
 
 func main() {
     client := eureka.NewClient("http://127.0.0.1:8761/eureka")
     instance := client.NewInstance("foo", "localhost", "127.0.0.1", 7022, false, "", "", "")
+    // Register instance to Eureka
     err := client.Register(instance)
     if err != nil {
         panic(err)
@@ -45,7 +46,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-See also the list of [contributors](https://github.com/mattb2401/veego/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/mattb2401/go-eureka-client/contributors) who participated in this project.
 
 
 ## Acknowledgments
