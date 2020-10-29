@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -71,7 +70,6 @@ func (c *Client) GetAllInstances() (*Apps, error) {
 	if response.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error: %v, code: %v", string(bd), response.StatusCode)
 	}
-	log.Print(string(bd))
 	var applications Apps
 	err = json.Unmarshal(bd, &applications)
 	if err != nil {
@@ -93,7 +91,6 @@ func (c *Client) GetAllInstancesByApp(instance *Application) (*Instances, error)
 	if response.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("error: %v, code: %v", string(bd), response.StatusCode)
 	}
-	log.Print(string(bd))
 	var instances Instances
 	err = json.Unmarshal(bd, &instances)
 	if err != nil {
